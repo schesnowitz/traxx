@@ -1,0 +1,44 @@
+
+<header class="content__title">
+  <h1>Update Theme</h1>
+  <small>Remember to save once a theme color is selected</small>
+  <div class="actions">
+    <a href="" class="actions__item zmdi zmdi-trending-up"></a>
+    <a href="" class="actions__item zmdi zmdi-check-all"></a>
+    <div class="dropdown actions__item">
+      <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a href="" class="dropdown-item">Refresh</a>
+        <a href="" class="dropdown-item">Manage Widgets</a>
+        <a href="" class="dropdown-item">Settings</a>
+      </div>
+    </div>
+  </div>
+</header>
+<%= simple_form_for(@app_setting) do |f| %>
+  <%= f.error_notification %>
+    <a id='theme_1' href="" class="themes__item active" data-sa-value="1"><img src="<%= asset_url 'img/bg/1.jpg' %>" alt=""></a> 
+    <a id='theme_2' href="" class="themes__item" data-sa-value="2"><img src="<%= asset_url 'img/bg/2.jpg' %>" alt=""></a>
+    <a id='theme_3' href="" class="themes__item" data-sa-value="3"><img src="<%= asset_url 'img/bg/3.jpg' %>" alt=""></a>
+    <a id='theme_4' href="" class="themes__item" data-sa-value="4"><img src="<%= asset_url 'img/bg/4.jpg' %>" alt=""></a>
+    <a id='theme_5' href="" class="themes__item" data-sa-value="5"><img src="<%= asset_url 'img/bg/5.jpg' %>" alt=""></a>
+    <a id='theme_6' href="" class="themes__item" data-sa-value="6"><img src="<%= asset_url 'img/bg/6.jpg' %>" alt=""></a>
+    <a id='theme_7' href="" class="themes__item" data-sa-value="7"><img src="<%= asset_url 'img/bg/7.jpg' %>" alt=""></a>
+    <a id='theme_8' href="" class="themes__item" data-sa-value="8"><img src="<%= asset_url 'img/bg/8.jpg' %>" alt=""></a>
+    <a id='theme_9' href="" class="themes__item" data-sa-value="9"><img src="<%= asset_url 'img/bg/9.jpg' %>" alt=""></a>
+    <a id='theme_10' href="" class="themes__item" data-sa-value="10"><img src="<%= asset_url 'img/bg/10.jpg' %>" alt=""></a>
+  <div class="form-inputs">
+<span class='hidden'><%= f.input :theme_color %></span>
+    
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+
+
+
+  
+

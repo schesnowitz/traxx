@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  theme_color: MyString
+  hidden_sidebar: false
+  boxed_content: false
+
+two:
+  theme_color: MyString
+  hidden_sidebar: false
+  boxed_content: false

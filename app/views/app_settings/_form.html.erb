@@ -1,0 +1,33 @@
+<%= simple_form_for(@app_setting) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <ul>
+      <li class="hidden-xs-down">
+          <a href="" class="top-nav__themes" data-sa-action="aside-open" data-sa-target=".themes"><i class="zmdi zmdi-palette"></i></a>
+      </li>
+    </ul>
+    <%= link_to "Edit Theme", edit_theme_path, class: 'btn btn-outline-primary' %>
+    <%= f.input :theme_color %>
+    <%= f.input :hidden_sidebar %>
+    <%= f.input :boxed_content %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+
+    <a id='theme_1' href="" class="themes__item active" data-sa-value="1"><img src="<%= asset_url 'img/bg/1.jpg' %>" alt=""></a> 
+    <a id='theme_2' href="" class="themes__item" data-sa-value="2"><img src="<%= asset_url 'img/bg/2.jpg' %>" alt=""></a>
+    <a id='theme_3' href="" class="themes__item" data-sa-value="3"><img src="<%= asset_url 'img/bg/3.jpg' %>" alt=""></a>
+    <a id='theme_4' href="" class="themes__item" data-sa-value="4"><img src="<%= asset_url 'img/bg/4.jpg' %>" alt=""></a>
+    <a id='theme_5' href="" class="themes__item" data-sa-value="5"><img src="<%= asset_url 'img/bg/5.jpg' %>" alt=""></a>
+    <a id='theme_6' href="" class="themes__item" data-sa-value="6"><img src="<%= asset_url 'img/bg/6.jpg' %>" alt=""></a>
+    <a id='theme_7' href="" class="themes__item" data-sa-value="7"><img src="<%= asset_url 'img/bg/7.jpg' %>" alt=""></a>
+    <a id='theme_8' href="" class="themes__item" data-sa-value="8"><img src="<%= asset_url 'img/bg/8.jpg' %>" alt=""></a>
+    <a id='theme_9' href="" class="themes__item" data-sa-value="9"><img src="<%= asset_url 'img/bg/9.jpg' %>" alt=""></a>
+    <a id='theme_10' href="" class="themes__item" data-sa-value="10"><img src="<%= asset_url 'img/bg/10.jpg' %>" alt=""></a>
+
+

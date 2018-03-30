@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Theme color:</strong>
+  <%= @app_setting.theme_color %>
+</p>
+
+<%= link_to 'Edit', edit_app_setting_path(@app_setting) %> |
+<%= link_to 'Back', app_settings_path %>
