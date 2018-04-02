@@ -1,0 +1,204 @@
+<%= simple_form_for(@shipment) do |f| %>
+<%= f.error_notification %>
+<div class="card">
+  <div class="card-header">
+    <% if action_name == "new" %>
+    <h3>New Shipment</h3>
+    <% end %>
+    <% if action_name == "edit" %>
+    <h3>Edit Shipment</h3>
+    <% end %>
+    <div class='row'>
+      <div class="quick-stats__item col-md-3">
+        <div class="quick-stats__info">
+          <h2>987,459</h2>
+          <small>Select Vehicle</small>
+          <%= f.input :vehcile_id, input_html: { class: 'form-control form-control-sm' } %>
+        </div>
+        <div class="quick-stats__chart peity-bar">6,4,8,6,5,6,7,8,3,5,9</div>
+      </div>
+      <div class="quick-stats__item col-md-3">
+        <div class="quick-stats__info">
+          <h2>987,459</h2>
+          <small>Select Broker</small>
+          <%= f.input :broker_profile_id, input_html: { class: 'form-control form-control-sm' } %>
+        </div>
+        <div class="quick-stats__chart peity-bar">6,4,8,6,5,6,7,8,3,5,9</div>
+      </div>
+    </div>
+  <div class='row'>
+    <div class=col>
+      <div class="card border-dark">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <%= f.input :invoice_price, input_html: { class: 'form-control form-control-sm' } %>
+          <%= f.input :booking_fee, input_html: { class: 'form-control form-control-sm' } %>
+          <%= f.input :percent_deducted, input_html: { class: 'form-control form-control-sm' } %>
+          <%= f.input :percent_coverted_to_dollars, input_html: { class: 'form-control form-control-sm' } %>
+          <%= f.input :rate_to_owner_operator, input_html: { class: 'form-control form-control-sm' } %>
+        </div>
+      </div>
+    </div>
+    <div class=col>
+      <div class="card text-white bg-success">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <%= f.input :load_size, input_html: { class: 'form-control form-control-sm' } %>
+          <%= f.input :broker_shipper_load_id, input_html: { class: 'form-control form-control-sm' } %>
+          <strong>Booking Status:</strong>
+          <%= f.select :status_name, Shipment::ShipmentStatus, input_html: { class: 'form-control form-control-sm' }, include_blank: true %><br><br>
+          <%= f.input :dimentions, input_html: { class: 'form-control form-control-sm' }  %>
+          <%= f.input :description, input_html: { class: 'form-control form-control-sm' }  %>
+          <strong>Commodity: </strong>
+          <%= f.select :commodity, Shipment::Commodity, input_html: { class: 'form-control form-control-sm' }, include_blank: true %>
+        </div>
+      </div>
+    </div>
+    <div class=col>
+      <div class="card border-primary">
+        <div class="card-header">Header</div>
+        <div class="card-body text-primary">
+          <%= f.input :broker_rep_name, input_html: { class: 'form-control form-control-sm' } %>
+          <%= f.input :broker_rep_email, input_html: { class: 'form-control form-control-sm' } %>
+          <%= f.input :broker_rep_number, input_html: { class: 'form-control form-control-sm' } %>
+          <%= f.input :broker_rep_cell, input_html: { class: 'form-control form-control-sm' } %>
+          <%= f.input :broker_after_hours_instructions, input_html: { class: 'form-control form-control-sm' } %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=row>
+    <div class=col>
+      <div class="card border-dark">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <%= image_tag 'stop' %> 
+          <%= f.input :has_multiple_pd, label: "Has Multiple Stops?" %>
+        </div>
+      </div>
+    </div>
+    <div class=col>
+      <div class="card border-dark">
+        <div class="card-header">Header</div>
+        <div class="card-body text-light">
+          <div id="show_hide_is_pounds_check">
+            <h4><%= f.input :is_pounds, label: "Enter weight in pounds" %></h4>
+          </div>
+          <div id="show_hide_is_kilos_check">
+            <h4><%= f.input :is_kilograms, label: "Enter weight in kilograms" %></h4>
+          </div>
+          <div id='show_me_the_pounds' class="hidden">
+            <p>
+              <label>Pounds</label>
+              <input id="inputPounds" type="number" placeholder="Pounds"> 
+            </p>
+            <p>= <span id="outputKilograms"></span>kilograms</p>
+          </div>
+          <div id='show_me_the_kilograms' class="hidden">
+            <input id="inputKilograms" type="number" placeholder="Kilograms">
+            <p>= <span id="outputPounds"></span> pounds</p>
+          </div>
+          <div class="hidden">
+            <%= f.input :pounds, input_html: { class: 'form-control form-control-sm hidden' } %>
+            <%= f.input :kilograms, input_html: { class: 'form-control form-control-sm hidden' } %> 
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=col>
+      <div class="card border-dark">
+        <div class="card-header">Header</div>
+        <div class="card-body text-dark">
+          <div id="is_temp_control_check">
+            <h4><%= image_tag "hazardous.jpg" %><%= f.input :is_hazmat, label: "Load contains Hazardous Materials?" %> 
+              <%= image_tag 'tempcontrol' %> 
+              <%= f.input :needs_temp_control, label: "needs temperature control?" %>
+            </h4>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div id="is_fahrenheit_check" class="hidden">
+            <%= image_tag 'fahrenheit.jpg' %>
+            <h4><%= f.input :is_fahrenheit, label: "input fahrenheit?" %></h4>
+          </div>
+          <div id="is_celsius_check" class="hidden">
+            <%= image_tag 'celsius.jpg' %>
+            <h4><%= f.input :is_celsius, label: "input celsius?" %></h4>
+          </div>
+          <div id="celsius_input" class="hidden">
+            <input id="inputCelsius" type="number" placeholder="Celsius">
+            <p>= <span id="outputFahrenheit"></span> fahrenheit</p>
+          </div>
+          <div id="fahrenheit_input" class="hidden">
+            <input id="inputFahrenheit" type="number" placeholder="Fahrenheit">
+            <p>= <span id="outputCelsius"></span> celsius:</p>
+          </div>
+          <div class="hidden">
+            <%= f.input :celsius, input_html: { class: 'form-control form-control-sm' } %> 
+            <%= f.input :fahrenheit, input_html: { class: 'form-control form-control-sm' } %>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+<div class='row'>
+<div class=col>
+<div class="card border-dark">
+  <div class="card-header">Origin</div>
+  <div class="card-body">
+          <%= f.date_field :pick_up_date %>
+          <%= f.input :shipper_company_name, label: false, placeholder: "Pick Up Company Name", input_html: { class: 'form-control form-control-sm' } %>
+          <%= f.input :origin_street, label: false, placeholder: "Street Address", input_html: { class: 'form-control form-control-sm' }  %>
+          <%= f.input :origin_city, label: false, placeholder: "City", input_html: { class: 'form-control form-control-sm' }  %>
+          <%= f.select :origin_state_provence, ApplicationRecord::StateProvence, include_blank: "State | Provence", label: false %>
+          <%= f.input :origin_postal_code, label: false, placeholder: "postal code", input_html: { class: 'form-control form-control-sm' } %>
+          <label>phone</label><br>
+          <%= f.text_field :origin_phone, id: 'phone3', input_html: { class: 'form-control form-control-sm' } %> 
+          <%= f.input :origin_contact, label: false, placeholder: "Contact Person", input_html: { class: 'form-control form-control-sm' } %>
+          <%= f.input :pick_up_notes, placeholder: "dock 34 @12.45am", input_html: { class: 'form-control form-control-sm' } %>
+  </div>
+</div>
+</div>
+<div class='col'>
+<div class="card border-dark">
+  <div class="card-header">Destination</div>
+  <div class="card-body">
+ <%= f.date_field :delivery_date %>
+            <%= f.input :receiver_company_name, label: false, placeholder: "Deliver to Company Name", input_html: { class: 'form-control form-control-sm' }  %>
+            <%= f.input :destination_street, label: false, placeholder: "Street Address", input_html: { class: 'form-control form-control-sm' }  %>
+            <%= f.input :destination_city, label: false, placeholder: "City", input_html: { class: 'form-control form-control-sm' }  %>
+            <%= f.select :destination_state_provence, ApplicationRecord::StateProvence, include_blank: "State | Provence", label: false  %>
+            <%= f.input :destination_postal_code, label: false, placeholder: "postal code", input_html: { class: 'form-control form-control-sm' } %>
+            <label>phone</label><br>
+            <%= f.phone_field :destination_phone, id: 'phone4', input_html: { class: 'form-control form-control-sm' } %>
+            <%= f.input :destination_contact, label: false, placeholder: "Contact Person", input_html: { class: 'form-control form-control-sm' } %>
+            <%= f.input :delivery_notes, placeholder: "see sally @3pm", input_html: { class: 'form-control form-control-sm' }  %>
+  </div>
+</div>
+</div>
+</div>
+  <%= f.input :special_instructions, input_html: { class: 'form-control form-control-sm' } %>
+  
+  <%= f.input :miles, input_html: { class: 'form-control form-control-sm' } %>
+  <%= f.input :kilometers, input_html: { class: 'form-control form-control-sm' } %>
+</div>
+</div>
+
+
+  <%= f.input :total_company_expenses %>
+  <%= f.input :driver_cents_pm %>
+  <%= f.input :rate_after_booking_fee %>
+  <%= f.input :agent_fee %>
+
+  <%= f.input :delivery_notes %>
+
+
+
+  
+
+
+<div class="form-actions">
+  <%= f.button :submit %>
+</div>
+<% end %>

@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>FrontEnd</title>
+
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
 
-
+    <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= stylesheet_link_tag 'css/app.min.css', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
 
 
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+ 
+
   </head>
 
 <body data-sa-theme=<%= @app_setting.theme_color %>>
@@ -46,3 +50,7 @@
 
   </body>
 </html>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["GOOGLE_MAPS_KEY"]%>&callback=initMap">
+</script> 
+

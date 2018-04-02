@@ -1,0 +1,34 @@
+<%= simple_form_for(@vehicle) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :api_vehicle_id, input_html: {value: @response_vehicle_id || ''} %>
+    <%= f.input :number, input_html: {value: @response_vehicle_number || ''} %>
+    <%= f.input :status, input_html: {value: @response_vehicle_status || ''} %>
+    <%= f.input :ifta, input_html: {value: @response_vehicle_ifta || ''} %>
+    <%= f.input :vin %>
+    <%= f.input :make, input_html: {value: @response_vehicle_make || ''} %>
+    <%= f.input :model, input_html: {value: @response_vehicle_model || ''} %>
+    <%= f.input :year, input_html: {value: @response_vehicle_year || ''} %>
+    <%= f.input :license_plate_state, input_html: {value: @response_vehicle_state || ''} %>
+    <%= f.input :license_plate_number, input_html: {value: @response_vehicle_plate || ''} %>
+    <%= f.input :metric_units, input_html: {value: @response_vehicle_metric || ''} %>
+    <%= f.input :fuel_type, input_html: {value: @response_vehicle_fuel || ''} %>
+    <%= f.input :prevent_auto_odometer_entry, input_html: {checked: @response_vehicle_paoe || ''} %>
+    <%= f.input :edl_device_id, input_html: {value: @response_edl_id || ''} %>
+    <%= f.input :edl_identifier, input_html: {value: @response_edl_identifier || ''} %>
+    <%= f.input :edl_model, input_html: {value: @response_edl_model || ''} %>
+    <%= f.input :api_driver_id, input_html: {value: @response_driver_id  || 000} %>
+    <%= f.input :api_first_name, input_html: {value: @response_driver_first_name || ''} %>
+    <%= f.input :api_last_name, input_html: {value: @response_driver_last_name || ''} %>
+    <%= f.input :api_username, input_html: {value: @response_driver_userrname || ''} %>
+    <%= f.input :api_email, input_html: {value: @response_driver_email || ''} %>
+    <%= f.input :api_driver_company_id, input_html: {value: @response_driver_company_id || ''} %>
+    <%= f.input :api_status, input_html: {value: @response_driver_status || ''} %>
+    <%= f.input :api_role, input_html: {value: @response_driver_role || ''} %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

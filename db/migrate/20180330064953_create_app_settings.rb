@@ -4,7 +4,16 @@ class CreateAppSettings < ActiveRecord::Migration[5.2]
       t.string :theme_color
       t.boolean :hidden_sidebar
       t.boolean :boxed_content
-
+      t.string :carrier_name
+      t.string :carrier_street
+      t.string :carrier_city
+      t.string :carrier_state
+      t.string :carrier_zip
+      t.string :terminal_name
+      t.string :terminal_street
+      t.string :terminal_city
+      t.string :terminal_state
+      t.string :terminal_zip
       t.timestamps
     end
   end

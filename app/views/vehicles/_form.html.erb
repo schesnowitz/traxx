@@ -1,0 +1,82 @@
+<%= simple_form_for(@vehicle) do |f| %>
+<%= f.error_notification %>
+<div class="form-inputs">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Title Text</h4>
+      <h6 class="card-subtitle">Text here</h6>
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <%= f.input :number %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <%= f.input :vin %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <%= f.input :make %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <%= f.input :model %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <%= f.input :year %>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <label>Status</label><br>
+            <%= f.select :status, Vehicle::STATUS %><br><br> 
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <label>IFTA</label><br>
+            <%= f.select :ifta, Vehicle::TRUE_FALSE %><br><br>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <label>Prevent Auto Odometer Entry</label><br>
+            <%= f.select :prevent_auto_odometer_entry, Vehicle::TRUE_FALSE %><br><br>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+             <label>Metric Units</label><br>
+            <%= f.select :metric_units, Vehicle::TRUE_FALSE %><br><br>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <label>Plate State | Provence</label><br>
+            <%= f.select :license_plate_state, Vehicle::StateProvence %><br><br> 
+            <%= f.input :license_plate_number %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <label>Fuel Type</label><br>
+            <%= f.select :fuel_type, Vehicle::FUEL_TYPE %><br><br>  
+          </div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_30_070834) do
+ActiveRecord::Schema.define(version: 2018_04_01_022314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(version: 2018_03_30_070834) do
     t.string "theme_color"
     t.boolean "hidden_sidebar"
     t.boolean "boxed_content"
+    t.string "carrier_name"
+    t.string "carrier_street"
+    t.string "carrier_city"
+    t.string "carrier_state"
+    t.string "carrier_zip"
+    t.string "terminal_name"
+    t.string "terminal_street"
+    t.string "terminal_city"
+    t.string "terminal_state"
+    t.string "terminal_zip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -143,6 +153,7 @@ ActiveRecord::Schema.define(version: 2018_03_30_070834) do
     t.string "carrier_state"
     t.string "carrier_zip"
     t.string "violation_alerts"
+    t.string "terminal_name"
     t.string "terminal_street"
     t.string "terminal_city"
     t.string "terminal_state"
@@ -173,14 +184,16 @@ ActiveRecord::Schema.define(version: 2018_03_30_070834) do
     t.string "manual_driving_enabled"
     t.string "role"
     t.string "status"
+    t.integer "terminal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["terminal_id"], name: "index_driver_profiles_on_terminal_id"
   end
 
   create_table "drivers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "username"
+    t.integer "driver_profile_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -199,6 +212,7 @@ ActiveRecord::Schema.define(version: 2018_03_30_070834) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_drivers_on_confirmation_token", unique: true
+    t.index ["driver_profile_id"], name: "index_drivers_on_driver_profile_id"
     t.index ["email"], name: "index_drivers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_drivers_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_drivers_on_unlock_token", unique: true
@@ -278,6 +292,18 @@ ActiveRecord::Schema.define(version: 2018_03_30_070834) do
     t.index ["dispatcher_id"], name: "index_shipments_on_dispatcher_id"
     t.index ["driver_id"], name: "index_shipments_on_driver_id"
     t.index ["vehcile_id"], name: "index_shipments_on_vehcile_id"
+  end
+
+  create_table "terminals", force: :cascade do |t|
+    t.string "name"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "telephone"
+    t.integer "app_setting_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "vehicle_locations", force: :cascade do |t|

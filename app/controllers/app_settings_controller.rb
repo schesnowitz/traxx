@@ -43,7 +43,7 @@ class AppSettingsController < ApplicationController
   def update
     respond_to do |format|
       if @app_setting.update(app_setting_params)
-        format.html { redirect_to @app_setting, notice: 'App setting was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'App setting was successfully updated.' }
         format.json { render :show, status: :ok, location: @app_setting }
       else
         format.html { render :edit }
@@ -63,8 +63,9 @@ class AppSettingsController < ApplicationController
   end
 
   def edit_theme
-
+    # 
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -77,7 +78,19 @@ class AppSettingsController < ApplicationController
       params.require(:app_setting).permit(
         :theme_color,
         :hidden_sidebar,
-        :boxed_content
+        :boxed_content,
+        :carrier_name,
+        :carrier_street,
+        :carrier_city,
+        :carrier_state,
+        :carrier_zip,
+        :terminal_name,
+        :terminal_street,
+        :terminal_city,
+        :terminal_state,
+        :terminal_zip
         )
     end
 end
+
+

@@ -1,0 +1,2 @@
+json.extract! vehicle_location, :id, :location_id, :located_at, :latitude, :longitude, :bearing, :engine_hours, :driver_id, :fuel, :odometer, :speed, :location_description, :movement_type, :driver_first_name, :driver_last_name, :driver_username, :driver_company_id, :driver_status, :driver_role, :edl_id, :edl_identifier, :edl_model, :date, :driver_profile_id, :created_at, :updated_at
+json.url vehicle_location_url(vehicle_location, format: :json)

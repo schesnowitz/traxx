@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Broker Profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company name</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>State provence</th>
+      <th>Postal code</th>
+      <th>Telephone</th>
+      <th>Fax</th>
+      <th>Email</th>
+      <th>Website</th>
+      <th>Logo</th>
+      <th>Broker mc number</th>
+      <th>Carrier mc number</th>
+      <th>Us dot number</th>
+      <th>Contact person0</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @broker_profiles.each do |broker_profile| %>
+      <tr>
+        <td><%= broker_profile.company_name %></td>
+        <td><%= broker_profile.street %></td>
+        <td><%= broker_profile.city %></td>
+        <td><%= broker_profile.state_provence %></td>
+        <td><%= broker_profile.postal_code %></td>
+        <td><%= broker_profile.telephone %></td>
+        <td><%= broker_profile.fax %></td>
+        <td><%= broker_profile.email %></td>
+        <td><%= broker_profile.website %></td>
+        <td><%= broker_profile.logo %></td>
+        <td><%= broker_profile.broker_mc_number %></td>
+        <td><%= broker_profile.carrier_mc_number %></td>
+        <td><%= broker_profile.us_dot_number %></td>
+        <td><%= broker_profile.contact_person0 %></td>
+        <td><%= link_to 'Show', broker_profile %></td>
+        <td><%= link_to 'Edit', edit_broker_profile_path(broker_profile) %></td>
+        <td><%= link_to 'Destroy', broker_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Broker Profile', new_broker_profile_path %>

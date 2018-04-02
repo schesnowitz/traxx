@@ -1,0 +1,24 @@
+<%= simple_form_for(@broker_profile) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :company_name %>
+    <%= f.input :street %>
+    <%= f.input :city %>
+    <%= f.input :state_provence %>
+    <%= f.input :postal_code %>
+    <%= f.input :telephone %>
+    <%= f.input :fax %>
+    <%= f.input :email %>
+    <%= f.input :website %>
+    <%= f.input :logo %>
+    <%= f.input :broker_mc_number %>
+    <%= f.input :carrier_mc_number %>
+    <%= f.input :us_dot_number %>
+    <%= f.input :contact_person0 %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
+  before_action :set_vehicle, only: [:show, :edit, :update, :destroy, :post_request]
 
   # GET /vehicles
   # GET /vehicles.json
@@ -35,6 +35,8 @@ class VehiclesController < ApplicationController
 
     respond_to do |format|
       if @vehicle.save
+        
+        CreateVehicleJob.perform_later(@vehicle.id)
         format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
         format.json { render :show, status: :created, location: @vehicle }
       else
@@ -45,50 +47,7 @@ class VehiclesController < ApplicationController
   end
 
 
-  def put_request
-
-    @url = 'https://api.keeptruckin.com/v1'
-    @headers = { 'content-type': 'application/json', 'X-Api-Key': ENV["KEEP_TRUCKIN_KEY"] } 
-    request = HTTParty.put("#{@url}/vehicles/#{@vehicle.api_id}", headers: @headers, 
-    body: 
-    { 
-      number: @vehicle.number,
-      status: @vehicle.status, 
-      ifta: @vehicle.ifta, 
-      license_plate_state: @vehicle.license_plate_state, 
-      license_plate_number: @vehicle.license_plate_number, 
-      metric_units: @vehicle.metric_units, 
-      fuel_type: @vehicle.fuel_type, 
-      prevent_auto_odometer_entry: @vehicle.prevent_auto_odometer_entry }.to_json)
-    # @user_response = JSON.parse(@response.body, object_class: OpenStruct)
-    
-    # puts @user_response.body, @user_response.message
-    puts "request Body: #{request.body}", "request Code: #{request.code}", "request Message: #{request.message}"
-  end
-  # PATCH/PUT /vehicles/1
-  # PATCH/PUT /vehicles/1.json
-  def update
-    respond_to do |format|
-      if @vehicle.update(vehicle_params)
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully updated.' }
-        format.json { render :show, status: :ok, location: @vehicle }
-        put_request
-      else
-        format.html { render :edit }
-        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /vehicles/1
-  # DELETE /vehicles/1.json
-  def destroy
-    @vehicle.destroy
-    respond_to do |format|
-      format.html { redirect_to vehicles_url, notice: 'Vehicle was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  
 
   def api_update_vehicle
   end

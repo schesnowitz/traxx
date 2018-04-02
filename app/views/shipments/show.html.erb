@@ -1,0 +1,274 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Commodity:</strong>
+  <%= @shipment.commodity %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @shipment.weight %>
+</p>
+
+<p>
+  <strong>Miles or km:</strong>
+  <%= @shipment.miles_or_km %>
+</p>
+
+<p>
+  <strong>Load size:</strong>
+  <%= @shipment.load_size %>
+</p>
+
+<p>
+  <strong>Miles:</strong>
+  <%= @shipment.miles %>
+</p>
+
+<p>
+  <strong>Kilometers:</strong>
+  <%= @shipment.kilometers %>
+</p>
+
+<p>
+  <strong>Invoice price:</strong>
+  <%= @shipment.invoice_price %>
+</p>
+
+<p>
+  <strong>Booking fee:</strong>
+  <%= @shipment.booking_fee %>
+</p>
+
+<p>
+  <strong>Percent deducted:</strong>
+  <%= @shipment.percent_deducted %>
+</p>
+
+<p>
+  <strong>Total company expenses:</strong>
+  <%= @shipment.total_company_expenses %>
+</p>
+
+<p>
+  <strong>Rate to owner operator:</strong>
+  <%= @shipment.rate_to_owner_operator %>
+</p>
+
+<p>
+  <strong>Percent coverted to dollars:</strong>
+  <%= @shipment.percent_coverted_to_dollars %>
+</p>
+
+<p>
+  <strong>Driver cents pm:</strong>
+  <%= @shipment.driver_cents_pm %>
+</p>
+
+<p>
+  <strong>Rate after booking fee:</strong>
+  <%= @shipment.rate_after_booking_fee %>
+</p>
+
+<p>
+  <strong>Agent fee:</strong>
+  <%= @shipment.agent_fee %>
+</p>
+
+<p>
+  <strong>Pick up date:</strong>
+  <%= local_time(@shipment.pick_up_date, format: "%A, %d %b %Y") if !@shipment.pick_up_date.nil? %>
+</p>
+
+
+
+<p>
+  <strong>Delivery date:</strong>
+  <%= local_time(@shipment.delivery_date, format: "%A, %d %b %Y") if !@shipment.delivery_date.nil? %>
+</p>
+
+
+<p>
+  <strong>Delivery notes:</strong>
+  <%= @shipment.delivery_notes %>
+</p>
+
+
+
+<p>
+  <strong>Status name:</strong>
+  <%= @shipment.status_name %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @shipment.updated_by %>
+</p>
+
+<p>
+  <strong>Special instructions:</strong>
+  <%= @shipment.special_instructions %>
+</p>
+
+<p>
+  <strong>Dimentions:</strong>
+  <%= @shipment.dimentions %>
+</p>
+
+<p>
+  <strong>Origin street:</strong>
+  <%= @shipment.origin_street %>
+</p>
+
+<p>
+  <strong>Origin city:</strong>
+  <%= @shipment.origin_city %>
+</p>
+
+<p>
+  <strong>Origin state provence:</strong>
+  <%= @shipment.origin_state_provence %>
+</p>
+
+<p>
+  <strong>Origin postal code:</strong>
+  <%= @shipment.origin_postal_code %>
+</p>
+
+<p>
+  <strong>Origin phone:</strong>
+  <%= @shipment.origin_phone %>
+</p>
+
+<p>
+  <strong>Origin contact:</strong>
+  <%= @shipment.origin_contact %>
+</p>
+
+<p>
+  <strong>Destination street:</strong>
+  <%= @shipment.destination_street %>
+</p>
+
+<p>
+  <strong>Destination city:</strong>
+  <%= @shipment.destination_city %>
+</p>
+
+<p>
+  <strong>Destination state provence:</strong>
+  <%= @shipment.destination_state_provence %>
+</p>
+
+<p>
+  <strong>Destination postal code:</strong>
+  <%= @shipment.destination_postal_code %>
+</p>
+
+<p>
+  <strong>Destination phone:</strong>
+  <%= @shipment.destination_phone %>
+</p>
+
+<p>
+  <strong>Destination contact:</strong>
+  <%= @shipment.destination_contact %>
+</p>
+
+<p>
+  <strong>Shipper company name:</strong>
+  <%= @shipment.shipper_company_name %>
+</p>
+
+<p>
+  <strong>Receiver company name:</strong>
+  <%= @shipment.receiver_company_name %>
+</p>
+
+<p>
+  <strong>Origin latitude:</strong>
+  <%= @shipment.origin_latitude %>
+</p>
+
+<p>
+  <strong>Origin longitude:</strong>
+  <%= @shipment.origin_longitude %>
+</p>
+
+<p>
+  <strong>Destination latitude:</strong>
+  <%= @shipment.destination_latitude %>
+</p>
+
+<p>
+  <strong>Destination longitude:</strong>
+  <%= @shipment.destination_longitude %>
+</p>
+
+<p>
+  <strong>Percentage:</strong>
+  <%= @shipment.percentage_id %>
+</p>
+
+<p>
+  <strong>Kilograms:</strong>
+  <%= @shipment.kilograms %>
+</p>
+
+<p>
+  <strong>Pounds:</strong>
+  <%= @shipment.pounds %>
+</p>
+
+<p>
+  <strong>Is kilograms:</strong>
+  <%= @shipment.is_kilograms %>
+</p>
+
+<p>
+  <strong>Is pounds:</strong>
+  <%= @shipment.is_pounds %>
+</p>
+
+<p>
+  <strong>Is hazmat:</strong>
+  <%= @shipment.is_hazmat %>
+</p>
+
+<p>
+  <strong>Needs temp control:</strong>
+  <%= @shipment.needs_temp_control %>
+</p>
+
+<p>
+  <strong>Is fahrenheit:</strong>
+  <%= @shipment.is_fahrenheit %>
+</p>
+
+<p>
+  <strong>Is celsius:</strong>
+  <%= @shipment.is_celsius %>
+</p>
+
+<p>
+  <strong>Fahrenheit:</strong>
+  <%= @shipment.fahrenheit %>
+</p>
+
+<p>
+  <strong>Celsius:</strong>
+  <%= @shipment.celsius %>
+</p>
+
+<p>
+  <strong>Pick up notes:</strong>
+  <%= @shipment.pick_up_notes %>
+</p>
+
+<p>
+  <strong>Broker shipper load:</strong>
+  <%= @shipment.broker_shipper_load_id %>
+</p>
+
+<%= link_to 'Edit', edit_shipment_path(@shipment) %> |
+<%= link_to 'Back', shipments_path %>

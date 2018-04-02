@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @terminal.name %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @terminal.street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @terminal.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @terminal.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @terminal.zip %>
+</p>
+
+<p>
+  <strong>Telephone:</strong>
+  <%= @terminal.telephone %>
+</p>
+
+<p>
+  <strong>App setting:</strong>
+  <%= @terminal.app_setting_id %>
+</p>
+
+<%= link_to 'Edit', edit_app_setting_terminal_path(@app_setting, @terminal) %> |
+<%= link_to 'Back', app_setting_terminals_path %>

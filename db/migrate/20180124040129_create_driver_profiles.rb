@@ -20,6 +20,7 @@ class CreateDriverProfiles < ActiveRecord::Migration[5.2]
       t.string :carrier_state
       t.string :carrier_zip
       t.string :violation_alerts
+      t.string :terminal_name
       t.string :terminal_street
       t.string :terminal_city
       t.string :terminal_state
@@ -50,6 +51,7 @@ class CreateDriverProfiles < ActiveRecord::Migration[5.2]
       t.string :manual_driving_enabled
       t.string :role
       t.string :status
+      t.integer :terminal_id, index: true
 
       t.timestamps
     end

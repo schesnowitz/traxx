@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vehicle Locations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time Located at</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Bearing</th>
+      <th>Engine hours</th>
+      <th>Driver API ID</th>
+      <th>Fuel</th>
+      <th>Odometer</th>
+      <th>Speed</th>
+      <th>Location Description</th>
+ 
+      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehicle_locations.each do |vehicle_location| %>
+      <tr>
+
+        <td><%= local_time(vehicle_location.time_located_at, format: "%A, %d %b %Y %l:%M %p") if !vehicle_location.time_located_at.nil? %></td>
+        <td><%= vehicle_location.latitude %></td>
+        <td><%= vehicle_location.longitude %></td>
+        <td><%= vehicle_location.bearing %></td>
+        <td><%= vehicle_location.engine_hours %></td>
+        <td><%= vehicle_location.driver_api_id %></td>
+        <td><%= vehicle_location.fuel %></td>
+        <td><%= vehicle_location.odometer %></td>
+        <td><%= vehicle_location.speed %></td>
+        <td><%= vehicle_location.location_description %></td>
+  
+       
+        <td><%= link_to 'Show', vehicle_location %></td>
+        <td><%= link_to 'Edit', edit_vehicle_location_path(vehicle_location) %></td>
+        <td><%= link_to 'Destroy', vehicle_location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vehicle Location', new_vehicle_location_path %>
+
+

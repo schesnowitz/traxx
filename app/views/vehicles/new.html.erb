@@ -1,0 +1,8 @@
+<h1>New Vehicle</h1>
+<%= form_tag new_vehicle_path, method: :get do %> 
+<%= text_field_tag :search_data, params[:search_data] %>
+<%= submit_tag 'Search', class: 'btn btn-outline-info', name: nil %> 
+<% end %>
+<%= render 'form', vehicle: @vehicle %>
+
+<%= link_to 'Back', vehicles_path %>

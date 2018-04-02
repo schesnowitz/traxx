@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  
   devise_for :brokers
   devise_for :drivers
 
@@ -27,7 +28,9 @@ Rails.application.routes.draw do
 
   # devise_for :admins, path: 'admins', controllers: { registrations: 'adnins/registrations'}
 
-  resources :app_settings
+  resources :app_settings do
+    resources :terminals
+  end
 
   root 'pages#index' 
   get 'edit_theme', to: 'app_settings#edit_theme'

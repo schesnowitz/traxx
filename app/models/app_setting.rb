@@ -1,4 +1,7 @@
 class AppSetting < ApplicationRecord
+  has_many :terminals
+
+
   COLOR = %w(
     1
     2

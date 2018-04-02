@@ -1,0 +1,87 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Location ID:</strong>
+  <%= @vehicle_location.location_id %>
+</p>
+
+<p>
+  <strong>Located at:</strong>
+<%= local_time(@vehicle_location.time_located_at, format: "%A, %d %b %Y %l:%M %p") %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @vehicle_location.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @vehicle_location.longitude %>
+</p>
+
+<p>
+  <strong>Bearing:</strong>
+  <%= @vehicle_location.bearing %>
+</p>
+
+<p>
+  <strong>Vehicle API ID:</strong>
+  <%= @vehicle_location.api_vehicle_id %>
+</p>
+
+
+<p>
+  <strong>Engine hours:</strong>
+  <%= @vehicle_location.engine_hours %>
+</p>
+
+<p>
+  <strong>Driver API ID:</strong>
+  <%= @vehicle_location.driver_api_id %>
+</p>
+
+<p>
+  <strong>Fuel:</strong>
+  <%= @vehicle_location.fuel %>
+</p>
+
+<p>
+  <strong>Odometer:</strong>
+  <%= @vehicle_location.odometer %>
+</p>
+
+<p>
+  <strong>Speed:</strong>
+  <%= @vehicle_location.speed %>
+</p>
+
+<p>
+  <strong>Location description:</strong>
+  <%= @vehicle_location.location_description %>
+</p>
+
+
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+<script>
+function initMap() {
+  var uluru = {lat: <%= @vehicle_location.latitude %>, lng: <%= @vehicle_location.longitude %>};
+  var map = new google.maps.Map(document.getElementById('map'), { 
+    zoom: 10,
+    center: uluru
+  });
+  var marker = new google.maps.Marker({
+    position: uluru,
+    map: map
+  });
+}</script>
+
+

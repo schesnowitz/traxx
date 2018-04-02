@@ -1,0 +1,2 @@
+EDITOR=vim rails credentials:edit
+Rails.application.credentials.driver_temp_password

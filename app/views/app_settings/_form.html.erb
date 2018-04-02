@@ -1,16 +1,19 @@
 <%= simple_form_for(@app_setting) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <ul>
-      <li class="hidden-xs-down">
-          <a href="" class="top-nav__themes" data-sa-action="aside-open" data-sa-target=".themes"><i class="zmdi zmdi-palette"></i></a>
-      </li>
-    </ul>
-    <%= link_to "Edit Theme", edit_theme_path, class: 'btn btn-outline-primary' %>
+
     <%= f.input :theme_color %>
     <%= f.input :hidden_sidebar %>
     <%= f.input :boxed_content %>
+    <%= f.input :carrier_name %>
+    <%= f.input :carrier_street %>
+    <%= f.input :carrier_city %>
+    <%= f.input :carrier_state %>
+    <%= f.input :carrier_zip %>
+    <%= f.input :terminal_name %>
+    <%= f.input :terminal_street %>
+    <%= f.input :terminal_city %>
+    <%= f.input :terminal_state %>
+    <%= f.input :terminal_zip %>
   </div>
 
   <div class="form-actions">

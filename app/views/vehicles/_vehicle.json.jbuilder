@@ -1,0 +1,2 @@
+json.extract! vehicle, :id, :api_vehicle_id, :number, :status, :ifta, :vin, :make, :model, :year, :license_plate_state, :license_plate_number, :metric_units, :fuel_type, :prevent_auto_odometer_entry, :edl_device_id, :edl_identifier, :edl_model, :api_driver_id, :api_first_name, :api_last_name, :api_username, :api_email, :api_driver_company_id, :api_status, :api_role, :created_at, :updated_at
+json.url vehicle_url(vehicle, format: :json)

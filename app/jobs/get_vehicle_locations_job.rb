@@ -7,7 +7,7 @@ class GetVehicleLocationsJob < ApplicationJob
       'vehicle_ids': @id
     }
     @url = 'https://api.keeptruckin.com/v1'
-    @headers = { 'content-type': 'application/json', 'X-Api-Key': ENV["KEEP_TRUCKIN_KEY"] }
+    @headers = { 'content-type': 'application/json', 'X-Api-Key': ENV["dd07c811-10ff-4b66-b5dd-f7353719e5c9"] }
     @all_locations = HTTParty.get("#{@url}/vehicle_locations", query: @query, headers: @headers)
     @locations_response = JSON.parse(@all_locations.body, object_class: OpenStruct)
 

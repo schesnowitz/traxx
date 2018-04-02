@@ -15,7 +15,10 @@ class DriverProfilesController < ApplicationController
 
   # GET /driver_profiles/new
   def new
-    the_fallback
+    # the_fallback
+
+    @app_setting = AppSetting.find(1) 
+    @terminal = @app_setting.terminals
     @driver_profile = DriverProfile.new
   end
 
@@ -137,6 +140,8 @@ class DriverProfilesController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_driver_profile
@@ -145,6 +150,6 @@ class DriverProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def driver_profile_params
-      params.require(:driver_profile).permit(:driver_company_id, :api_id, :email, :first_name, :last_name, :phone, :phone_ext, :image, :emergency_contact_name, :emergency_contact_phone, :time_zone, :metric_units, :carrier_name, :carrier_street, :carrier_city, :carrier_state, :carrier_zip, :violation_alerts, :terminal_street, :terminal_city, :terminal_state, :terminal_zip, :cycle, :exception_24_hour_restart, :exception_8_hour_break, :exception_wait_time, :exception_short_haul, :exception_ca_farm_school_bus, :cycle2, :exception_24_hour_restart2, :exception_8_hour_break2, :exception_wait_time2, :exception_short_haul2, :exception_ca_farm_school_bus2, :export_combined, :export_recap, :export_odometers, :username, :driver_company_id, :minute_logs, :duty_status, :eld_mode, :drivers_license_number, :drivers_license_state, :yard_moves_enabled, :personal_conveyance_enabled, :manual_driving_enabled, :role, :status, :password)
+      params.require(:driver_profile).permit(:driver_company_id, :api_id, :email, :first_name, :last_name, :phone, :phone_ext, :image, :emergency_contact_name, :emergency_contact_phone, :time_zone, :metric_units, :carrier_name, :carrier_street, :carrier_city, :carrier_state, :carrier_zip, :violation_alerts, :terminal_street, :terminal_city, :terminal_state, :terminal_zip, :cycle, :exception_24_hour_restart, :exception_8_hour_break, :exception_wait_time, :exception_short_haul, :exception_ca_farm_school_bus, :cycle2, :exception_24_hour_restart2, :exception_8_hour_break2, :exception_wait_time2, :exception_short_haul2, :exception_ca_farm_school_bus2, :export_combined, :export_recap, :export_odometers, :username, :driver_company_id, :minute_logs, :duty_status, :eld_mode, :drivers_license_number, :drivers_license_state, :yard_moves_enabled, :personal_conveyance_enabled, :manual_driving_enabled, :role, :status, :password, :terminal_name, :terminal_id)
     end
 end

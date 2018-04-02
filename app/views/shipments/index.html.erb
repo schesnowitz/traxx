@@ -1,0 +1,137 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shipments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Commodity</th>
+      <th>Weight</th>
+      <th>Miles or km</th>
+      <th>Load size</th>
+      <th>Miles</th>
+      <th>Kilometers</th>
+      <th>Invoice price</th>
+      <th>Booking fee</th>
+      <th>Percent deducted</th>
+      <th>Total company expenses</th>
+      <th>Rate to owner operator</th>
+      <th>Percent coverted to dollars</th>
+      <th>Driver cents pm</th>
+      <th>Rate after booking fee</th>
+      <th>Agent fee</th>
+      <th>Pick up date</th>
+      <th>Pick up time</th>
+      <th>Delivery date</th>
+      <th>Delivery time</th>
+      <th>Delivery notes</th>
+      <th>Equipment type</th>
+      <th>Status name</th>
+      <th>Updated by</th>
+      <th>Special instructions</th>
+      <th>Dimentions</th>
+      <th>Origin street</th>
+      <th>Origin city</th>
+      <th>Origin state provence</th>
+      <th>Origin postal code</th>
+      <th>Origin phone</th>
+      <th>Origin contact</th>
+      <th>Destination street</th>
+      <th>Destination city</th>
+      <th>Destination state provence</th>
+      <th>Destination postal code</th>
+      <th>Destination phone</th>
+      <th>Destination contact</th>
+      <th>Shipper company name</th>
+      <th>Receiver company name</th>
+      <th>Origin latitude</th>
+      <th>Origin longitude</th>
+      <th>Destination latitude</th>
+      <th>Destination longitude</th>
+      <th>Percentage</th>
+      <th>Kilograms</th>
+      <th>Pounds</th>
+      <th>Is kilograms</th>
+      <th>Is pounds</th>
+      <th>Is hazmat</th>
+      <th>Needs temp control</th>
+      <th>Is fahrenheit</th>
+      <th>Is celsius</th>
+      <th>Fahrenheit</th>
+      <th>Celsius</th>
+      <th>Pick up notes</th>
+      <th>Broker shipper load</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shipments.each do |shipment| %>
+      <tr>
+        <td><%= shipment.commodity %></td>
+        <td><%= shipment.weight %></td>
+        <td><%= shipment.miles_or_km %></td>
+        <td><%= shipment.load_size %></td>
+        <td><%= shipment.miles %></td>
+        <td><%= shipment.kilometers %></td>
+        <td><%= shipment.invoice_price %></td>
+        <td><%= shipment.booking_fee %></td>
+        <td><%= shipment.percent_deducted %></td>
+        <td><%= shipment.total_company_expenses %></td>
+        <td><%= shipment.rate_to_owner_operator %></td>
+        <td><%= shipment.percent_coverted_to_dollars %></td>
+        <td><%= shipment.driver_cents_pm %></td>
+        <td><%= shipment.rate_after_booking_fee %></td>
+        <td><%= shipment.agent_fee %></td>
+        <td><%= shipment.pick_up_date %></td>
+        <td><%= shipment.pick_up_time %></td>
+        <td><%= shipment.delivery_date %></td>
+        <td><%= shipment.delivery_time %></td>
+        <td><%= shipment.delivery_notes %></td>
+        <td><%= shipment.equipment_type %></td>
+        <td><%= shipment.status_name %></td>
+        <td><%= shipment.updated_by %></td>
+        <td><%= shipment.special_instructions %></td>
+        <td><%= shipment.dimentions %></td>
+        <td><%= shipment.origin_street %></td>
+        <td><%= shipment.origin_city %></td>
+        <td><%= shipment.origin_state_provence %></td>
+        <td><%= shipment.origin_postal_code %></td>
+        <td><%= shipment.origin_phone %></td>
+        <td><%= shipment.origin_contact %></td>
+        <td><%= shipment.destination_street %></td>
+        <td><%= shipment.destination_city %></td>
+        <td><%= shipment.destination_state_provence %></td>
+        <td><%= shipment.destination_postal_code %></td>
+        <td><%= shipment.destination_phone %></td>
+        <td><%= shipment.destination_contact %></td>
+        <td><%= shipment.shipper_company_name %></td>
+        <td><%= shipment.receiver_company_name %></td>
+        <td><%= shipment.origin_latitude %></td>
+        <td><%= shipment.origin_longitude %></td>
+        <td><%= shipment.destination_latitude %></td>
+        <td><%= shipment.destination_longitude %></td>
+        <td><%= shipment.percentage_id %></td>
+        <td><%= shipment.kilograms %></td>
+        <td><%= shipment.pounds %></td>
+        <td><%= shipment.is_kilograms %></td>
+        <td><%= shipment.is_pounds %></td>
+        <td><%= shipment.is_hazmat %></td>
+        <td><%= shipment.needs_temp_control %></td>
+        <td><%= shipment.is_fahrenheit %></td>
+        <td><%= shipment.is_celsius %></td>
+        <td><%= shipment.fahrenheit %></td>
+        <td><%= shipment.celsius %></td>
+        <td><%= shipment.pick_up_notes %></td>
+        <td><%= shipment.broker_shipper_load_id %></td>
+        <td><%= link_to 'Show', shipment %></td>
+        <td><%= link_to 'Edit', edit_shipment_path(shipment) %></td>
+        <td><%= link_to 'Destroy', shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shipment', new_shipment_path %>

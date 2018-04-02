@@ -1,0 +1,124 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>API ID:</strong>
+  <%= @vehicle.api_id %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @vehicle.number %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @vehicle.status %>
+</p>
+
+<p>
+  <strong>Ifta:</strong>
+  <%= @vehicle.ifta %>
+</p>
+
+<p>
+  <strong>Vin:</strong>
+  <%= @vehicle.vin %>
+</p>
+
+<p>
+  <strong>Make:</strong>
+  <%= @vehicle.make %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @vehicle.model %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @vehicle.year %>
+</p>
+
+<p>
+  <strong>License plate state:</strong>
+  <%= @vehicle.license_plate_state %>
+</p>
+
+<p>
+  <strong>License plate number:</strong>
+  <%= @vehicle.license_plate_number %>
+</p>
+
+<p>
+  <strong>Metric units:</strong>
+  <%= @vehicle.metric_units %>
+</p>
+
+<p>
+  <strong>Fuel type:</strong>
+  <%= @vehicle.fuel_type %>
+</p>
+
+<p>
+  <strong>Prevent auto odometer entry:</strong>
+  <%= @vehicle.prevent_auto_odometer_entry %>
+</p>
+
+<p>
+  <strong>Edl device:</strong>
+  <%= @vehicle.edl_device_id %>
+</p>
+
+<p>
+  <strong>Edl identifier:</strong>
+  <%= @vehicle.edl_identifier %>
+</p>
+
+<p>
+  <strong>Edl model:</strong>
+  <%= @vehicle.edl_model %>
+</p>
+
+<p>
+  <strong>Api driver:</strong>
+  <%= @vehicle.api_driver_id %>
+</p>
+
+<p>
+  <strong>Driver Name:</strong>
+  <%= "#{@vehicle.driver_first_name} #{@vehicle.driver_last_name}" %>
+</p>
+
+
+<p>
+  <strong>Driver username:</strong>
+  <%= @vehicle.driver_username %>
+</p>
+
+<p>
+  <strong>Driver email:</strong>
+  <%= @vehicle.driver_email %>
+</p>
+
+
+<p>
+  <strong>Driver status:</strong>
+  <%= @vehicle.driver_status %>
+</p>
+
+<p>
+  <strong>Driver role:</strong>
+  <%= @vehicle.driver_role %>
+</p>
+<h3>Locations</h3>
+<% @locations.each do |location| %>
+<%= location.latitude %>
+<%= location.longitude %>
+<%= local_time(location.time_located_at, format: "%A, %d %b %Y %l:%M %p") %>
+
+<%= link_to "Show Location", vehicle_location_path(location) %>
+<% end %>
+
+<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
+<%= link_to 'Back', vehicles_path %>
