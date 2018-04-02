@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2018_04_01_022314) do
     t.string "terminal_city"
     t.string "terminal_state"
     t.string "terminal_zip"
+    t.string "driver_temp_password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -153,11 +154,6 @@ ActiveRecord::Schema.define(version: 2018_04_01_022314) do
     t.string "carrier_state"
     t.string "carrier_zip"
     t.string "violation_alerts"
-    t.string "terminal_name"
-    t.string "terminal_street"
-    t.string "terminal_city"
-    t.string "terminal_state"
-    t.string "terminal_zip"
     t.string "cycle"
     t.string "exception_24_hour_restart"
     t.string "exception_8_hour_break"

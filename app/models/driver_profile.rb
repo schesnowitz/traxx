@@ -1,28 +1,30 @@
 class DriverProfile < ApplicationRecord
+  @app_setting = AppSetting.find(1)
+
   has_many :drivers
   belongs_to :terminal
-  before_create :random_id, :set_temp_password
-  # after_update :put_data
+
+  before_create :set_columns, :random_id
+
   validates :driver_company_id, uniqueness: { case_sensitive: false }, on: :create
+
   validates :email, uniqueness: { case_sensitive: false }, on: :create
   # validates :api_id, uniqueness: { case_sensitive: false }, on: :create
-  # validates_presence_of :first_name, :last_name, :role
-  # validates_presence_of :password, on: :create
+  validates_presence_of :first_name, :last_name, :role, :password
+
+  after_create :build_driver
 
   def random_id
-  # self.driver_company_id = (0...50).map { (65 + rand(26)).chr }.join
-  self.driver_company_id = SecureRandom.hex
-  end
-  
-  after_create :build_driver
-  # after_update :put_data
-  
-  def build_driver
-    Driver.create(driver_profile: self, password: Rails.application.credentials.driver_temp_password, password_confirmation: Rails.application.credentials.driver_temp_password, email: self.email) 
+    self.driver_company_id = SecureRandom.hex
   end
 
-  def set_temp_password
-    self.password ||= Rails.application.credentials.driver_temp_password
+  def set_columns
+    self.password ||= @app_setting.driver_temp_password
+    self.username ||= "#{self.first_name}_#{self.last_name}_#{SecureRandom.hex}"
+  end
+
+  def build_driver
+    Driver.create(driver_profile: self, password: self.password, password_confirmation: self.password, email: self.email) 
   end
 
 DRIVER_ROLE = %w(
@@ -62,6 +64,7 @@ DUTY_STATUS = %w(
   waiting
 )
 end 
+
 
 
 

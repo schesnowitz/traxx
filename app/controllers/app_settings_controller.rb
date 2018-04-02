@@ -88,7 +88,8 @@ class AppSettingsController < ApplicationController
         :terminal_street,
         :terminal_city,
         :terminal_state,
-        :terminal_zip
+        :terminal_zip,
+        :driver_temp_password
         )
     end
 end

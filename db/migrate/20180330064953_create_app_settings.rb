@@ -14,6 +14,7 @@ class CreateAppSettings < ActiveRecord::Migration[5.2]
       t.string :terminal_city
       t.string :terminal_state
       t.string :terminal_zip
+      t.string :driver_temp_password
       t.timestamps
     end
   end

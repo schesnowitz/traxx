@@ -49,8 +49,8 @@ class DriverProfilesController < ApplicationController
   def post_request
 
     @url = 'https://api.keeptruckin.com/v1'
-    @headers = { 'content-type': 'application/json', 'X-Api-Key': ENV["KEEP_TRUCKIN_KEY"] } 
-    request = HTTParty.put("#{@url}/users/", headers: @headers, 
+    @headers = { 'content-type': 'application/json', 'X-Api-Key': 'dd07c811-10ff-4b66-b5dd-f7353719e5c9' } 
+    request = HTTParty.post("#{@url}/users/", headers: @headers, 
     body: 
     { 
 
@@ -64,15 +64,15 @@ class DriverProfilesController < ApplicationController
       phone: @driver_profile.phone, 
       phone_ext: @driver_profile.phone_ext, 
       time_zone: @driver_profile.time_zone,
-      carrier_name: @driver_profile.carrier_name, 
-      carrier_street: @driver_profile.carrier_street, 
-      carrier_city: @driver_profile.carrier_city,
-      carrier_state: @driver_profile.carrier_state, 
-      carrier_zip: @driver_profile.carrier_zip, 
-      terminal_street: @driver_profile.terminal_street,
-      terminal_city: @driver_profile.terminal_city, 
-      terminal_state: @driver_profile.terminal_state, 
-      terminal_zip: @driver_profile.terminal_zip, 
+      carrier_name: @app_setting.carrier_name, 
+      carrier_street: @app_setting.carrier_street, 
+      carrier_city: @app_setting.carrier_city,
+      carrier_state: @app_setting.carrier_state, 
+      carrier_zip: @app_setting.carrier_zip, 
+      terminal_street: @driver_profile.terminal.street,
+      terminal_city: @driver_profile.terminal.city, 
+      terminal_state: @driver_profile.terminal.state, 
+      terminal_zip: @driver_profile.terminal.zip, 
       username: @driver_profile.username,
       drivers_license_number: @driver_profile.drivers_license_number,
       drivers_license_state: @driver_profile.drivers_license_state,
@@ -81,11 +81,18 @@ class DriverProfilesController < ApplicationController
     
     # puts @user_response.body, @user_response.message
     puts "request Body: #{request.body}", "request Code: #{request.code}", "request Message: #{request.message}"
+
+    puts "Password #{@driver_profile.password}"
+    puts "Role #{@driver_profile.role}"
+    puts "username #{@driver_profile.username}"
+    puts "first name #{@driver_profile.first_name}" 
+    puts "last name #{@driver_profile.last_name}" 
+    puts "email #{@driver_profile.email}"
   end
 
   def put_request
     @url = 'https://api.keeptruckin.com/v1'
-    @headers = { 'content-type': 'application/json', 'X-Api-Key': ENV["KEEP_TRUCKIN_KEY"] } 
+    @headers = { 'content-type': 'application/json', 'X-Api-Key': 'dd07c811-10ff-4b66-b5dd-f7353719e5c9' } 
     request = HTTParty.put("#{@url}/users/#{@driver_profile.api_id}", headers: @headers, 
     body: 
     { 
@@ -98,23 +105,20 @@ class DriverProfilesController < ApplicationController
       phone: @driver_profile.phone, 
       phone_ext: @driver_profile.phone_ext, 
       time_zone: @driver_profile.time_zone,
-      carrier_name: @driver_profile.carrier_name, 
-      carrier_street: @driver_profile.carrier_street, 
-      carrier_city: @driver_profile.carrier_city,
-      carrier_state: @driver_profile.carrier_state, 
-      carrier_zip: @driver_profile.carrier_zip, 
-      terminal_street: @driver_profile.terminal_street,
-      terminal_city: @driver_profile.terminal_city, 
-      terminal_state: @driver_profile.terminal_state, 
-      terminal_zip: @driver_profile.terminal_zip, 
+      carrier_name: @app_setting.carrier_name, 
+      carrier_street: @app_setting.carrier_street, 
+      carrier_city: @app_setting.carrier_city,
+      carrier_state: @app_setting.carrier_state, 
+      carrier_zip: @app_setting.carrier_zip, 
+      terminal_street: @driver_profile.terminal.street,
+      terminal_city: @driver_profile.terminal.city, 
+      terminal_state: @driver_profile.terminal.state, 
+      terminal_zip: @driver_profile.terminal.zip, 
       username: @driver_profile.username,
       drivers_license_number: @driver_profile.drivers_license_number,
       drivers_license_state: @driver_profile.drivers_license_state,
       role: @driver_profile.role }.to_json)
-    # @user_response = JSON.parse(@response.body, object_class: OpenStruct)
-    
-    # puts @user_response.body, @user_response.message
-    # puts "request Body: #{request.body}", "request Code: #{request.code}", "request Message: #{request.message}"
+      puts "request Body: #{request.body}", "request Code: #{request.code}", "request Message: #{request.message}"
   end
   def update
 
@@ -150,6 +154,53 @@ class DriverProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def driver_profile_params
-      params.require(:driver_profile).permit(:driver_company_id, :api_id, :email, :first_name, :last_name, :phone, :phone_ext, :image, :emergency_contact_name, :emergency_contact_phone, :time_zone, :metric_units, :carrier_name, :carrier_street, :carrier_city, :carrier_state, :carrier_zip, :violation_alerts, :terminal_street, :terminal_city, :terminal_state, :terminal_zip, :cycle, :exception_24_hour_restart, :exception_8_hour_break, :exception_wait_time, :exception_short_haul, :exception_ca_farm_school_bus, :cycle2, :exception_24_hour_restart2, :exception_8_hour_break2, :exception_wait_time2, :exception_short_haul2, :exception_ca_farm_school_bus2, :export_combined, :export_recap, :export_odometers, :username, :driver_company_id, :minute_logs, :duty_status, :eld_mode, :drivers_license_number, :drivers_license_state, :yard_moves_enabled, :personal_conveyance_enabled, :manual_driving_enabled, :role, :status, :password, :terminal_name, :terminal_id)
+      params.require(:driver_profile).permit(
+        :driver_company_id, 
+        :api_id, :email, 
+        :first_name, 
+        :last_name, 
+        :phone, 
+        :phone_ext, 
+        :image, 
+        :emergency_contact_name, 
+        :emergency_contact_phone, 
+        :time_zone, 
+        :metric_units, 
+        :carrier_name, 
+        :carrier_street, 
+        :carrier_city, 
+        :carrier_state, 
+        :carrier_zip, 
+        :violation_alerts, 
+        :cycle, 
+        :exception_24_hour_restart, 
+        :exception_8_hour_break, 
+        :exception_wait_time, 
+        :exception_short_haul, 
+        :exception_ca_farm_school_bus, 
+        :cycle2, 
+        :exception_24_hour_restart2, 
+        :exception_8_hour_break2, 
+        :exception_wait_time2, 
+        :exception_short_haul2,
+        :exception_ca_farm_school_bus2, 
+        :export_combined, 
+        :export_recap, 
+        :export_odometers, 
+        :username, 
+        :driver_company_id, 
+        :minute_logs, 
+        :duty_status, 
+        :eld_mode, 
+        :drivers_license_number, 
+        :drivers_license_state, 
+        :yard_moves_enabled, :personal_conveyance_enabled, 
+        :manual_driving_enabled, 
+        :role, 
+        :status, 
+        :password, 
+        :terminal_name, 
+        :terminal_id
+        )
     end
 end
