@@ -109,7 +109,7 @@ class CreateUpdateDriverProfileJob < ApplicationJob
         new_or_update.role = role
          
         new_or_update.save
-        puts "Done Updating Drivers #{api_id}"
+
         sleep 5  
       end
     end

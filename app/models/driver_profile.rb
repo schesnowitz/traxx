@@ -13,7 +13,7 @@ class DriverProfile < ApplicationRecord
   self.driver_company_id = SecureRandom.hex
   end
   
-  # after_create :build_driver
+  after_create :build_driver
   # after_update :put_data
   
   def build_driver
@@ -61,6 +61,31 @@ DUTY_STATUS = %w(
   sleeper
   driving
   waiting
+)
+
+CYCLE =%w(
+  70_8
+  60_7
+  70_8_o
+  60_7_o
+  70_8_p
+  60_7_p
+  80_8
+  80_8_o
+  80_8_p
+  tx_70_7
+  ak_70_7
+  ak_80_8
+  ak_70_7_o
+  ak_80_8_o
+  ak_70_7_p
+  ak_80_8_p
+  70_7
+  120_14
+  canada_oil
+  80_7
+  120_14_north
+  Other
 )
 end 
 

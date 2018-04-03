@@ -56,7 +56,7 @@ class DriverProfilesController < ApplicationController
     { 
 
       password: @driver_profile.password,
-      driver_company_id: @driver_profile.id,
+      driver_company_id: @driver_profile.driver_company_id,
       first_name: @driver_profile.first_name, 
       last_name: @driver_profile.last_name,
       email: @driver_profile.email, 
@@ -92,59 +92,57 @@ class DriverProfilesController < ApplicationController
   end
 
   def put_request
-   
+    @url = 'https://api.keeptruckin.com/v1'
+    @headers = { 'content-type': 'application/json', 'X-Api-Key': 'dd07c811-10ff-4b66-b5dd-f7353719e5c9' } 
+    request = HTTParty.put("#{@url}/users/#{@driver_profile.api_id}", headers: @headers, 
+    body: 
+    { 
+      duty_status: @driver_profile.duty_status,
+      driver_company_id: @driver_profile.id,
+      first_name: @driver_profile.first_name, 
+      last_name: @driver_profile.last_name,
+      email: @driver_profile.email, 
+      first_name: @driver_profile.first_name, 
+      last_name: @driver_profile.last_name, 
+      phone: @driver_profile.phone, 
+      phone_ext: @driver_profile.phone_ext, 
+      time_zone: @driver_profile.time_zone,
+      carrier_name: @app_setting.carrier_name, 
+      carrier_street: @app_setting.carrier_street, 
+      carrier_city: @app_setting.carrier_city,
+      carrier_state: @app_setting.carrier_state, 
+      carrier_zip: @app_setting.carrier_zip, 
+      terminal_street: @driver_profile.terminal.street,
+      terminal_city: @driver_profile.terminal.city, 
+      terminal_state: @driver_profile.terminal.state, 
+      terminal_zip: @driver_profile.terminal.zip, 
+      username: @driver_profile.username,
+      drivers_license_number: @driver_profile.drivers_license_number,
+      drivers_license_state: @driver_profile.drivers_license_state,
+      cycle: @driver_profile.cycle,
+      role: @driver_profile.role }.to_json)
+      puts "request Body: #{request.body}", "request Code: #{request.code}", "request Message: #{request.message}"
+
+      puts "Password #{@driver_profile.password}"
+      puts "Role #{@driver_profile.role}"
+      puts "username #{@driver_profile.username}"
+      puts "first name #{@driver_profile.first_name}" 
+      puts "last name #{@driver_profile.last_name}" 
+      puts "email #{@driver_profile.email}"
+
+      puts "Only Request Code: #{request.code.inspect}"
   end
+
+
   def update
 
     respond_to do |format|
-      @url = 'https://api.keeptruckin.com/v1'
-      @headers = { 'content-type': 'application/json', 'X-Api-Key': 'dd07c811-10ff-4b66-b5dd-f7353719e5c9' } 
-      request = HTTParty.put("#{@url}/users/#{@driver_profile.api_id}", headers: @headers, 
-      body: 
-      { 
-        duty_status: @driver_profile.duty_status,
-        driver_company_id: @driver_profile.id,
-        first_name: @driver_profile.first_name, 
-        last_name: @driver_profile.last_name,
-        email: @driver_profile.email, 
-        first_name: @driver_profile.first_name, 
-        last_name: @driver_profile.last_name, 
-        phone: @driver_profile.phone, 
-        phone_ext: @driver_profile.phone_ext, 
-        time_zone: @driver_profile.time_zone,
-        carrier_name: @app_setting.carrier_name, 
-        carrier_street: @app_setting.carrier_street, 
-        carrier_city: @app_setting.carrier_city,
-        carrier_state: @app_setting.carrier_state, 
-        carrier_zip: @app_setting.carrier_zip, 
-        terminal_street: @driver_profile.terminal.street,
-        terminal_city: @driver_profile.terminal.city, 
-        terminal_state: @driver_profile.terminal.state, 
-        terminal_zip: @driver_profile.terminal.zip, 
-        username: @driver_profile.username,
-        drivers_license_number: @driver_profile.drivers_license_number,
-        drivers_license_state: @driver_profile.drivers_license_state,
-        role: @driver_profile.role }.to_json)
-        puts "request Body: #{request.body}", "request Code: #{request.code}", "request Message: #{request.message}"
-  
-        puts "Password #{@driver_profile.password}"
-        puts "Role #{@driver_profile.role}"
-        puts "username #{@driver_profile.username}"
-        puts "first name #{@driver_profile.first_name}" 
-        puts "last name #{@driver_profile.last_name}" 
-        puts "email #{@driver_profile.email}"
 
-        puts "Only Request Code: #{request.code.inspect}"
- 
-
-
-
-
-
-      if @driver_profile.update(driver_profile_params) && request.code != 200
+     if @driver_profile.update(driver_profile_params) 
         format.html { redirect_to @driver_profile, notice: 'Driver profile was successfully updated.' }
-        format.json { render :show, status: :ok, location: @driver_profile }
-        flash[:success] = "Request Code: #{request.code} Request Message: #{request.message} Request Body: #{request.body}"
+        put_request
+
+ 
       else
         flash[:error] = "#{@driver_profile.errors.full_messages.to_sentence}"
         format.html { render :edit }
