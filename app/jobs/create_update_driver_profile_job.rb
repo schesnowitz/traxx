@@ -4,7 +4,7 @@ class CreateUpdateDriverProfileJob < ApplicationJob
   def perform(*args)
 
     @url = 'https://api.keeptruckin.com/v1'
-    @headers = { 'content-type': 'application/json', 'X-Api-Key': ENV["dd07c811-10ff-4b66-b5dd-f7353719e5c9"] }
+    @headers = { 'content-type': 'application/json', 'X-Api-Key': 'dd07c811-10ff-4b66-b5dd-f7353719e5c9' }
     @all_drivers = HTTParty.get("#{@url}/users", headers: @headers)
     @drivers_response = JSON.parse(@all_drivers.body, object_class: OpenStruct)
 
@@ -109,6 +109,7 @@ class CreateUpdateDriverProfileJob < ApplicationJob
         new_or_update.role = role
          
         new_or_update.save
+        puts "Done Updating Drivers #{api_id}"
         sleep 5  
       end
     end

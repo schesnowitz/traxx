@@ -1,10 +1,77 @@
-<h1></h1>
+
 <div class="form-inputs"></div>
 <div class="card">
   <div class="card-body">
     <h4 class="card-title">Editing Driver Profile</h4>
     <h6 class="card-subtitle"></h6>
-<%= render 'form', driver_profile: @driver_profile %>
+
+---------
+              <% @driver_profile.drivers.each do |driver|  %>
+Email:  <%= driver.email.inspect %>
+<% end %>
+---------
+<%= simple_form_for(@driver_profile) do |f| %>
+<%= f.error_notification %>
+
+
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="form-group">
+          <span class='hidden'>
+            <%= f.input :password, input_html: {value: @app_setting.driver_temp_password} %>
+          <%= f.input :carrier_name, input_html: { value: @app_setting.try(:carrier_name) }, readonly: true  %>
+          <%= f.input :carrier_street, input_html: { value: @app_setting.try(:carrier_street) }, readonly: true  %>
+          <%= f.input :carrier_city, input_html: { value: @app_setting.try(:carrier_city) }, readonly: true  %>
+          <label>Carrier State</label><br>
+          <%= f.input :carrier_state, input_html: { value: @app_setting.try(:carrier_state) }, readonly: true  %><br><br>
+          <%= f.input :carrier_zip, input_html: { value: @app_setting.try(:carrier_zip) }, readonly: true  %>
+          </span> 
+
+
+          <%= f.input :email %>
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :phone %>
+          <%= f.input :phone_ext %>
+          <%= f.input :emergency_contact_name %>
+          <%= f.input :emergency_contact_phone %>
+          <%= f.input :terminal_id, as: :select, class: "form-group", collection:  @app_setting.terminals, value_method: :id, prompt: 'Select Terminal' 
+            %> 
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group">
+
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <div class="form-group">
+          <label>Time Zone</label><br>
+          <%= f.select :time_zone, DriverProfile::TIME_ZONE %><br><br><br>  
+          <label>Role</label><br>
+          <%= f.select :role, DriverProfile::DRIVER_ROLE %><br><br><br>
+          <label>Violation Alerts Sent Every</label><br>
+          <%= f.select :violation_alerts, DriverProfile::VIOLATION_ALERTS %><br><br><br>
+          <label>Status</label><br>
+          <%= f.select :status, DriverProfile::DRIVER_STATUS %> <br><br>
+                    <label>Driver Profile Image</label><br>
+          <%= f.input :image, as: :file, label: false %>
+          <%= f.input :drivers_license_number %>
+          <label>License State | Provence</label><br>
+          <%= f.select :drivers_license_state, DriverProfile::StateProvence %>
+        </div>
+      </div>
+      
+
+
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  </div>
+</div>
+</div>
+<% end %>
 
 <%= link_to 'Show', @driver_profile %> |
 <%= link_to 'Back', driver_profiles_path %>

@@ -37,23 +37,23 @@ terminal2 = Terminal.create!(
 )
 puts terminal2.inspect
 
-driver_profile_1 = DriverProfile.create!(
-  email: 's.chesnowitz@gmail.com',
-  first_name: 'Steve',
-  last_name: '@ gmail',
-  role: 'driver',
-  password: 'password',
-  terminal_id: 1
-  )
-puts driver_profile_1.inspect
+# driver_profile_1 = DriverProfile.create!(
+#   email: 's.chesnowitz@gmail.com',
+#   first_name: 'Steve',
+#   last_name: '@ gmail',
+#   role: 'driver',
+#   password: 'password',
+#   terminal_id: 1
+#   )
+# puts driver_profile_1.inspect
 
-driver_profile_2 = DriverProfile.create!(
-  email: 'steve@chesnowitz.com',
-  first_name: 'Steve',
-  last_name: '@ Chesnowitz',
-  role: 'driver',
-  password: 'password',
-  terminal_id: 2
-  )
-puts driver_profile_2.inspect
+# driver_profile_2 = DriverProfile.create!(
+#   email: 'steve@chesnowitz.com',
+#   first_name: 'Steve',
+#   last_name: '@ Chesnowitz',
+#   role: 'driver',
+#   password: 'password',
+#   terminal_id: 2
+#   )
+# puts driver_profile_2.inspect
 

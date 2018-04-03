@@ -7,8 +7,7 @@ class CreateTerminals < ActiveRecord::Migration[5.2]
       t.string :state
       t.string :zip
       t.string :telephone
-      t.integer :app_setting_id
-
+      t.integer :app_setting_id, index: true
       t.timestamps
     end
   end

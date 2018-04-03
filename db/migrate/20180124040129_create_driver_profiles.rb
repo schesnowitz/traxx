@@ -19,6 +19,11 @@ class CreateDriverProfiles < ActiveRecord::Migration[5.2]
       t.string :carrier_city
       t.string :carrier_state
       t.string :carrier_zip
+      t.string :terminal_name
+      t.string :terminal_street
+      t.string :terminal_city
+      t.string :terminal_state
+      t.string :terminal_zip
       t.string :violation_alerts
       t.string :cycle
       t.string :exception_24_hour_restart
