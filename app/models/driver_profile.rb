@@ -1,7 +1,8 @@
 class DriverProfile < ApplicationRecord
+  
   # has_many :drivers
-  belongs_to :terminal
-  before_create :random_id, :set_temp_password
+  # belongs_to :terminal
+  before_create :random_id
   # after_update :put_data
   validates :driver_company_id, uniqueness: { case_sensitive: false }, on: :create
   validates :email, uniqueness: { case_sensitive: false }, on: :create
@@ -17,12 +18,13 @@ class DriverProfile < ApplicationRecord
   # after_update :put_data
   
   def build_driver
-    Driver.create(driver_profile: self, password: ENV['TEMP_DRIVER_PASSWORD'], password_confirmation: ENV['TEMP_DRIVER_PASSWORD'], email: self.email) 
+    @app_setting = AppSetting.find(1)
+    Driver.create(driver_profile: self, password: @app_setting.driver_temp_password, password_confirmation: @app_setting.driver_temp_password, email: self.email) 
   end
 
-  def set_temp_password
-    self.password ||= ENV['TEMP_DRIVER_PASSWORD']
-  end
+  # def set_temp_password
+  #   self.password ||= ENV['TEMP_DRIVER_PASSWORD']
+  # end
 
 DRIVER_ROLE = %w(
   driver

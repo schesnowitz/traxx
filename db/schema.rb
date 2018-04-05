@@ -305,6 +305,7 @@ ActiveRecord::Schema.define(version: 2018_04_01_022314) do
     t.integer "app_setting_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["app_setting_id"], name: "index_terminals_on_app_setting_id"
   end
 
   create_table "vehicle_locations", force: :cascade do |t|
