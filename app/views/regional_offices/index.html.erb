@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Regional Offices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address description</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Postal</th>
+      <th>Phone</th>
+      <th>Fax</th>
+      <th>Email</th>
+      <th>Notes</th>
+      <th>Three pl</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @regional_offices.each do |regional_office| %>
+      <tr>
+        <td><%= regional_office.address_description %></td>
+        <td><%= regional_office.street %></td>
+        <td><%= regional_office.city %></td>
+        <td><%= regional_office.state %></td>
+        <td><%= regional_office.postal %></td>
+        <td><%= regional_office.phone %></td>
+        <td><%= regional_office.fax %></td>
+        <td><%= regional_office.email %></td>
+        <td><%= regional_office.notes %></td>
+        <td><%= regional_office.three_pl_id %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

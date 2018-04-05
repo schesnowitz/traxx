@@ -14,23 +14,26 @@ class ShipmentsController < ApplicationController
 
   # GET /shipments/new
   def new
-    @shipment = Shipment.new
+    @shipment = Shipment.new 
+    @three_pls = ThreePl.all
   end
 
   # GET /shipments/1/edit
   def edit
+    @three_pls = ThreePl.all
   end
 
   # POST /shipments
   # POST /shipments.json
   def create
     @shipment = Shipment.new(shipment_params)
-
+    @three_pls = ThreePl.all
     respond_to do |format|
       if @shipment.save
         format.html { redirect_to @shipment, notice: 'Shipment was successfully created.' }
         format.json { render :show, status: :created, location: @shipment }
       else
+        flash[:danger] = "#{@shipment.errors.full_messages.to_sentence}"
         format.html { render :new }
         format.json { render json: @shipment.errors, status: :unprocessable_entity }
       end
@@ -134,7 +137,10 @@ class ShipmentsController < ApplicationController
                                         :broker_rep_cell,
                                         :broker_after_hours_instructions,
                                         :has_multiple_pd,
-                                        :vehcile_id
+                                        :vehcile_id,
+
+                                        # new in this app
+                                        :three_pl_id
 
                                         )
     end

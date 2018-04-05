@@ -1,4 +1,9 @@
 class Shipment < ApplicationRecord
+  belongs_to :three_pl
+
+
+
+
   Commodity =
 [
   "Household Goods",

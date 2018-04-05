@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
 
   
+  resources :three_pls do
+    resources :regional_offices
+  end
+
   devise_for :brokers
   devise_for :drivers
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_01_022314) do
+ActiveRecord::Schema.define(version: 2018_04_05_071809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -219,6 +219,21 @@ ActiveRecord::Schema.define(version: 2018_04_01_022314) do
     t.index ["unlock_token"], name: "index_drivers_on_unlock_token", unique: true
   end
 
+  create_table "regional_offices", force: :cascade do |t|
+    t.string "address_description"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "postal"
+    t.string "phone"
+    t.string "fax"
+    t.string "email"
+    t.string "notes"
+    t.integer "three_pl_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shipments", force: :cascade do |t|
     t.string "commodity"
     t.string "weight"
@@ -287,11 +302,13 @@ ActiveRecord::Schema.define(version: 2018_04_01_022314) do
     t.string "broker_rep_cell"
     t.string "broker_after_hours_instructions"
     t.boolean "has_multiple_pd"
+    t.integer "three_pl_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["broker_profile_id"], name: "index_shipments_on_broker_profile_id"
     t.index ["dispatcher_id"], name: "index_shipments_on_dispatcher_id"
     t.index ["driver_id"], name: "index_shipments_on_driver_id"
+    t.index ["three_pl_id"], name: "index_shipments_on_three_pl_id"
     t.index ["vehcile_id"], name: "index_shipments_on_vehcile_id"
   end
 
@@ -306,6 +323,25 @@ ActiveRecord::Schema.define(version: 2018_04_01_022314) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["app_setting_id"], name: "index_terminals_on_app_setting_id"
+  end
+
+  create_table "three_pls", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "fax"
+    t.string "email"
+    t.boolean "use_main_address"
+    t.string "website"
+    t.string "contact_name"
+    t.string "notes"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "postal_code"
+    t.string "dot"
+    t.string "mc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "vehicle_locations", force: :cascade do |t|

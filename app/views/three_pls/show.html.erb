@@ -1,0 +1,134 @@
+
+<div class="jumbotron">
+  <h1 class="display-3"><%= @three_pl.name %></h1>
+  <p class="lead">
+  
+ <strong>Dot:</strong>
+  <%= @three_pl.dot %>
+</p>
+
+<p>
+  <strong>Mc:</strong>
+  <%= @three_pl.mc %>
+
+    
+    <p>
+  <strong>Phone:</strong>
+  <%= @three_pl.phone %>
+</p>
+
+<p>
+  <strong>Fax:</strong>
+  <%= @three_pl.fax %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @three_pl.email %>
+</p>
+
+<p>
+  <strong>Use main address:</strong>
+  <%= @three_pl.use_main_address %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @three_pl.website %>
+</p>
+
+<p>
+  <strong>Contact name:</strong>
+  <%= @three_pl.contact_name %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @three_pl.notes %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @three_pl.street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @three_pl.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @three_pl.state %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @three_pl.postal_code %>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+  
+  </p>
+  <hr class="my-4">
+  <p>
+
+  <div class='row'>
+  <% @three_pl.regional_offices.each do |office| %>
+
+  <div class="card border-success col-sm-4" >
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h4 class="card-title">Success card title</h4>
+    <p class="card-text">
+    
+      <%= office.address_description %>
+      <%= office.street %>
+      <%= office.city %>
+      <%= office.state %>
+      <%= office.postal %>
+      <%= office.phone %>
+      <%= office.fax %>
+      <%= office.email %>
+      <%= office.notes %>
+    
+    
+    <%= office.three_pl_id %></p>
+  </div>
+</div>
+  </div>
+</div>
+    <% end %>
+  </p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </p>
+</div>
+
+
+
+<%= simple_form_for([@three_pl, @regional_office]) do |f| %>
+
+      <%= f.input :address_description %>
+      <%= f.input :street %>
+      <%= f.input :city %>
+      <%= f.input :state %>
+      <%= f.input :postal %>
+      <%= f.input :phone %>
+      <%= f.input :fax %>
+      <%= f.input :email %>
+      <%= f.input :notes %>
+      <%= f.input :three_pl_id %>
+
+ <%= f.submit %>
+
+ <% end %>

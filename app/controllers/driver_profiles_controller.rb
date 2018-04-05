@@ -38,7 +38,7 @@ class DriverProfilesController < ApplicationController
         post_request
         flash[:info] = "Data sent to api"
       else
-        flash[:error] = "#{@driver_profile.errors.full_messages.to_sentence}"
+        flash[:danger] = "#{@driver_profile.errors.full_messages.to_sentence}"
         format.html { render :new }
         format.json { render json: @driver_profile.errors, status: :unprocessable_entity }
       end

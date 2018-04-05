@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Three Pls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Fax</th>
+      <th>Email</th>
+      <th>Use main address</th>
+      <th>Website</th>
+      <th>Contact name</th>
+      <th>Notes</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Postal code</th>
+      <th>Dot</th>
+      <th>Mc</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @three_pls.each do |three_pl| %>
+      <tr>
+        <td><%= three_pl.name %></td>
+        <td><%= three_pl.phone %></td>
+        <td><%= three_pl.fax %></td>
+        <td><%= three_pl.email %></td>
+        <td><%= three_pl.use_main_address %></td>
+        <td><%= three_pl.website %></td>
+        <td><%= three_pl.contact_name %></td>
+        <td><%= three_pl.notes %></td>
+        <td><%= three_pl.street %></td>
+        <td><%= three_pl.city %></td>
+        <td><%= three_pl.state %></td>
+        <td><%= three_pl.postal_code %></td>
+        <td><%= three_pl.dot %></td>
+        <td><%= three_pl.mc %></td>
+        <td><%= link_to 'Show', three_pl %></td>
+        <td><%= link_to 'Edit', edit_three_pl_path(three_pl) %></td>
+        <td><%= link_to 'Destroy', three_pl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Three Pl', new_three_pl_path %>
