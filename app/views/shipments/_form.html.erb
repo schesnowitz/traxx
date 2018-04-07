@@ -26,7 +26,7 @@
  
 <%= f.grouped_collection_select :id, ThreePl.order(:name), :regional_offices, :name, :regional_office_street, :office_description, {include_blank: "Select 3pl"}, {id: 'three_pl_regional_offices'}%>
 
-   <% select_tag "ThreePl", 
+   <%= select_tag "ThreePl", 
           options_for_select(@three_pls.map{ |three| [three.name, three.id, data: { url: three_pl_path(three) }]}), 
           class: 'chosen-select' %>
 
