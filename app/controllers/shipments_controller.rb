@@ -16,8 +16,10 @@ class ShipmentsController < ApplicationController
   def new
     @shipment = Shipment.new 
     @three_pls = ThreePl.all
+    @three_pl_options = @three_pls.map{ |three| [three.name, three.id, data: { url: three_pl_path(three) } ] }
+    
   end
-
+   
   # GET /shipments/1/edit
   def edit
     @three_pls = ThreePl.all

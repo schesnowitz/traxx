@@ -21,26 +21,18 @@
         <div class="quick-stats__info">
           <h2><%= @three_pls.count %></h2>
           <small>Select 3PL</small>
-          <%= f.collection_select :three_pl_id, @three_pls.all.order(:name),
-                  :id, :name, include_blank: "3Pl" %> 
- 
-<%= f.grouped_collection_select :id, ThreePl.order(:name), :regional_offices, :name, :regional_office_street, :office_description, {include_blank: "Select 3pl"}, {id: 'three_pl_regional_offices'}%>
 
-   <%= select_tag "ThreePl", 
-          options_for_select(@three_pls.map{ |three| [three.name, three.id, data: { url: three_pl_path(three) }]}), 
-          class: 'chosen-select' %>
 
-<div id="shipment_three_pl_id_value"></div>
 
+
+
+<%= f.association :three_pl,
+                  collection: ThreePl.all,
+                  include_blank: true,
+                  input_html: { class: 'chosen-select' } 
+%>
 <script>
-  $(function() {      
-    $("#shipment_three_pl_id").change(function() {  
-      $('#shipment_three_pl_id_value').html(this.value);   
-      var truckYear = $("#truck_year option:selected").text();
-      $('#the_truck_year').html(truckYear);  
-      $('#load_truck_year').val(truckYear);  
-    }); 
-  });
+
 </script>
          
   <%= link_to "New 3PL", new_three_pl_path,
@@ -224,4 +216,8 @@
 <div class="form-actions">
   <%= f.button :submit %>
 </div>
+<% end %>
+
+
+<%= form_for(@shipment) do |f| %>
 <% end %>

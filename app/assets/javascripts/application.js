@@ -16,9 +16,11 @@
 
 
 //= require jquery3
+//= require chosen
 //= require popper
 //= require bootstrap
 //= require rails-ujs
+//= require turbolinks
 //= require activestorage
 
 
@@ -51,3 +53,17 @@
 //= require local-time.js 
 //= require masked.js 
 //= require regional_offices.coffee  
+
+
+$( document ).ready(function() {
+
+  $('.chosen-select').chosen({ 
+    allow_single_deselect: true,
+    no_results_text: 'No results matched',
+    width: '200px'
+  });
+});
+  
+
+
+

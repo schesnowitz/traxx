@@ -11,10 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= stylesheet_link_tag 'css/app.min.css', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag 'css/app.min.css' %>
+
 
 
 
@@ -44,10 +45,6 @@
 </section>
 
 </main>
- <p id='test'></p>
-
-
-
   </body>
 </html>
 <script async defer

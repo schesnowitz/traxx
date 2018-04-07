@@ -1,3 +1,10 @@
 .hidden {
   display: none;
 }
+
+
+
+/* 
+*= require_self
+*= require chosen-bootstrap
+*/

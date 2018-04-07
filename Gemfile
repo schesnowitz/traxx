@@ -31,6 +31,10 @@ gem 'sidekiq-cron', '~> 0.6.3'
 gem 'bootstrap-sass-extras', '~> 0.0.7'
 gem 'nanoboxifier'
 
+source 'https://rails-assets.org' do
+
+  gem 'rails-assets-chosen-bootstrap' # if using bootstrap
+end
 
 
 
