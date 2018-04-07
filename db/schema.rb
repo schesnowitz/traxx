@@ -220,7 +220,7 @@ ActiveRecord::Schema.define(version: 2018_04_05_071809) do
   end
 
   create_table "regional_offices", force: :cascade do |t|
-    t.string "address_description"
+    t.string "office_description"
     t.string "street"
     t.string "city"
     t.string "state"
@@ -330,14 +330,9 @@ ActiveRecord::Schema.define(version: 2018_04_05_071809) do
     t.string "phone"
     t.string "fax"
     t.string "email"
-    t.boolean "use_main_address"
     t.string "website"
     t.string "contact_name"
     t.string "notes"
-    t.string "street"
-    t.string "city"
-    t.string "state"
-    t.string "postal_code"
     t.string "dot"
     t.string "mc"
     t.datetime "created_at", null: false

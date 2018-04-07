@@ -34,7 +34,7 @@ class RegionalOfficesController < ApplicationController
       else
         
         flash[:danger] = "#{@regional_office.errors.full_messages.to_sentence}" 
-        format.html { render :new }
+        format.html { redirect_to_back }
         format.json { render json: @regional_office.errors, status: :unprocessable_entity }
       end
     end
@@ -48,7 +48,8 @@ class RegionalOfficesController < ApplicationController
         format.html { redirect_to @regional_office, notice: 'Regional office was successfully updated.' }
         format.json { render :show, status: :ok, location: @regional_office }
       else
-        format.html { render :edit }
+        flash[:danger] = "#{@regional_office.errors.full_messages.to_sentence}" 
+        format.html { redirect_to_back }
         format.json { render json: @regional_office.errors, status: :unprocessable_entity }
       end
     end
@@ -71,7 +72,7 @@ class RegionalOfficesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def regional_office_params
-      params.require(:regional_office).permit(:address_description, :street, :city, :state, :postal, :phone, :fax, :email, :notes, :three_pl_id)
+    def regional_office_params 
+      params.require(:regional_office).permit(:office_description, :street, :city, :state, :postal, :phone, :fax, :email, :notes, :three_pl_id)
     end
 end

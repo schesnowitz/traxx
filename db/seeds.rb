@@ -68,73 +68,26 @@ puts terminal2.inspect
     email: Faker::Internet.email,
     website: Faker::Internet.url,
     contact_name: Faker::Name.name,
-    notes: "Notes would go here...",
-    street: Faker::Address.street_address,
-    city: Faker::Address.city,
-    state: Faker::Address.state,
-    postal_code: Faker::Address.postcode,
+    notes: Faker::Lorem.sentence(2),
     dot: Faker::Number.number(6),
     mc: Faker::Number.number(6)
   )
 end
-
 puts "100 3pl's were created"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p id="notice"><%= notice %></p>
-<div class="jumbotron">
-  <h1 class="display-5">
-  
-</h1>
-  <p class="lead">
-  <div class="card col-md-4">
-  <div class="card-header">Main Office</div>
-  <div class="card-body">
-    <h4 class="card-title"> 
-
-  </div>
-</div>
-
-
-  </p>
-  <hr class="my-4">
-<div class="row justify-content-center">
-<div class="card border-info col-md-6 ">
-  <div class="card-header">Add Office</div>
-  <div class="card-body">
-    <h4 class="card-title">
-  </div>
-</div>
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-<%= link_to 'Edit', edit_three_pl_path(@three_pl) %> |
-<%= link_to 'Back', three_pls_path %>
-
-<% end %>
+500.times do |office|
+  RegionalOffice.create!(
+    office_description: "#{Faker::Address.city} Office",
+    street: Faker::Address.street_address,
+    city: Faker::Address.city,
+    state: Faker::Address.state,
+    postal: Faker::Address.postcode,
+    phone: Faker::PhoneNumber.phone_number,
+    fax: Faker::PhoneNumber.phone_number,
+    email: Faker::Internet.email,
+    notes: Faker::Lorem.sentence,
+    three_pl_id: "#{rand(1..100)}" 
+  )
+end
+puts "500 Regional Offices were created"

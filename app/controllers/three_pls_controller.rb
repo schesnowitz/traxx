@@ -69,8 +69,18 @@ class ThreePlsController < ApplicationController
       @three_pl = ThreePl.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+
     def three_pl_params
-      params.require(:three_pl).permit(:name, :phone, :fax, :email, :use_main_address, :website, :contact_name, :notes, :street, :city, :state, :postal_code, :dot, :mc)
+      params.require(:three_pl).permit(
+        :name, 
+        :phone, 
+        :fax, 
+        :email, 
+        :website, 
+        :contact_name, 
+        :notes, 
+        :dot, 
+        :mc
+        )
     end
 end

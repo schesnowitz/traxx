@@ -50,3 +50,4 @@
 //= require reload.js 
 //= require local-time.js 
 //= require masked.js 
+//= require regional_offices.coffee  
