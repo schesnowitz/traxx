@@ -22,8 +22,17 @@
           <h2><%= @three_pls.count %></h2>
           <small>Select 3PL</small>
 
-
-
+<select data-placeholder="Your Favorite Type of Bear" style="width: 350px; " class="chosen-select">
+            <option value=""></option>
+            <option>American Black Bear</option>
+            <option>Asiatic Black Bear</option>
+            <option>Brown Bear</option>
+            <option>Giant Panda</option>
+            <option selected="">Sloth Bear</option>
+            <option disabled="">Sun Bear</option>
+            <option>Polar Bear</option>
+            <option disabled="">Spectacled Bear</option>
+</select>
 
 
 <%= f.association :three_pl,
@@ -31,6 +40,8 @@
                   include_blank: true,
                   input_html: { class: 'chosen-select' } 
 %>
+
+<%= f.grouped_collection_select :id, ThreePl.order(:name), :regional_offices, :name, :regional_office_street, :office_description, {include_blank: "Select 3pl"}, {id: 'three_pl_regional_offices'} %>
 <script>
 
 </script>

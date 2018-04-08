@@ -16,11 +16,12 @@
 
 
 //= require jquery3
-//= require chosen
+
 //= require popper
 //= require bootstrap
 //= require rails-ujs
 //= require turbolinks
+//= require chosen
 //= require activestorage
 
 

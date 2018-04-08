@@ -8,3 +8,7 @@
 *= require_self
 *= require chosen-bootstrap
 */
+
+.chosen-container { 
+  width: 220px !important; 
+}
